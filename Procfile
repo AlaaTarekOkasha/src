@@ -1,0 +1,1 @@
+web gunicorn landing_api.wsgi:application --log-file -
