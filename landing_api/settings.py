@@ -2,8 +2,6 @@ import os
 from multiprocessing import AuthenticationError
 from pathlib import Path
 from tokenize import Token
-import django_heroku
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,8 +76,11 @@ WSGI_APPLICATION = 'landing_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'landingpages',
+        'USER': 'eyouth',
+        'PASSWORD': 'admin12345',
+        'HOST': 'localhost'
     }
 }
 
@@ -205,5 +206,3 @@ CKEDITOR_CONFIGS = {
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
-
-django_heroku.settings(locals())
