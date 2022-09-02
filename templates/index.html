@@ -3,12 +3,60 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Hello!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>EYouth Landing Pages - CMS</title>
+        <style>
+            .btn {
+            background-color: goldenrod;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            }
+
+            /* Darker background on mouse-over */
+            .btn:hover {
+            background-color: peru;
+            }
+            a:link, a:visited {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            }
+
+            a:hover, a:active {
+            background-color: peru;
+            }
+            .center {    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            margin: 0;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            }
+            body {
+              background-image: url('/media/homeImage/Home.jpg');
+              background-repeat: no-repeat;
+              background-attachment: fixed; 
+              background-size: 100% 100%;
+            }
+            </style>
     </head>
 
+    <div class="center">
     <body>
-        <h1>Hello World!</h1>
-        <p>This is a simple paragraph.</p>
+        {% csrf_token %}
+        <button class="btn"><a href="https://cms.eyouthlearning.com/admin/"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a></button>
     </body>
-
+    </div>
 </html>

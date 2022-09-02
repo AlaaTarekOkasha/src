@@ -16,7 +16,7 @@ urlpatterns = [
     path('api/v1/course/view/', CourseView.as_view(), name='course-view'),
     path('api/v1/content/view/', ContentView.as_view(), name='content-view'),
     path('api/v1/end-content/view/', EndContentView.as_view(), name='end-content-view'),
-    path('api/v1/criteria/view/', CriteriaView.as_view(), name='criteria-view'),
+    path('api/v1/criteria/view/', UserCriteriaView.as_view(), name='criteria-view'),
     path('api/v1/trainer/view/', TrainerView.as_view(), name='trainer-view'),
     path('api/v1/testemonial/view/', TestemonialView.as_view(), name='testemonial-view'),
 ]

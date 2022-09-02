@@ -4,48 +4,70 @@ from statistics import mode
 from rest_framework import serializers
 from .models import *
 
-class CourseSerializer(serializers.ModelSerializer):
+
+class ListTrainerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Courses
+        model = Trainer
+        fields = '__all__'
+
+class ListTestemonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testemonial
+        fields = '__all__'
+
+class CourseSerializer(serializers.ModelSerializer):
+    content_list = serializers.StringRelatedField(many=True)
+    end_content_list = serializers.StringRelatedField(many=True)
+    user_criteria_list = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = Course
         fields = (
+            'id',
             'title',
             'description',
             'image',
             'price',
+            'hours',
+            'start_date',
+            'content_list',
+            'end_content_list',
+            'user_criteria_list',
         )
 
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Courses
+        model = Content
         fields = (
-            'content',
+            'description',
         )        
 
 class EndContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Courses
+        model = EndContent
         fields = (
-            'end_content',
+            'description',
         )
 
 
-class CriteriaSerializer(serializers.ModelSerializer):
+class UserCriteriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Courses
+        model = UserCriteria
         fields = (
-            'criteria',
+            'description',
         )
 
 class TrainerSerializer(serializers.ModelSerializer):
+    trainers_list = ListTrainerSerializer(many=True, read_only=True)
     class Meta:
-        model = Courses
+        model = Course
         fields = (
             'trainers_list',
         )
 
 class TestemonialSerializer(serializers.ModelSerializer):
+    testemonials_list = ListTestemonialSerializer(many=True, read_only=True) 
     class Meta:
-        model = Courses
+        model = Course
         fields = (
-            'testemonials_list',
+            'testemonials_list', 
         )

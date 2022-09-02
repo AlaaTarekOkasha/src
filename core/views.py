@@ -1,11 +1,8 @@
 import re
 from turtle import pos
-from urllib import request
-from django.http import JsonResponse
 from django.shortcuts import render
 
 from rest_framework import mixins
-from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 
 from .serializers import *
@@ -14,24 +11,21 @@ from .models import *
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
-class CourseView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )    
-    queryset = Courses.objects.live()
+class CourseView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
+    queryset = Course.objects.live()
     serializer_class = CourseSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 # ----------------------------------------------------------------------------------------------------------
 
-class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )    
+class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView): 
+    queryset = Content.objects.live()
     serializer_class = ContentSerializer
-    queryset = Courses.objects.live()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
 
@@ -42,10 +36,9 @@ class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
         return self.create(request, *args, **kwargs)
 # ----------------------------------------------------------------------------------------------------------
 
-class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )    
+class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
+    queryset = EndContent.objects.live()
     serializer_class = EndContentSerializer
-    queryset = Courses.objects.live()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']   
 
@@ -56,10 +49,9 @@ class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Ge
         return self.create(request, *args, **kwargs)
 # ----------------------------------------------------------------------------------------------------------
 
-class CriteriaView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )    
-    serializer_class = CriteriaSerializer
-    queryset = Courses.objects.live()
+class UserCriteriaView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView): 
+    queryset = UserCriteria.objects.live()
+    serializer_class = UserCriteriaSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
 
@@ -70,10 +62,9 @@ class CriteriaView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gene
         return self.create(request, *args, **kwargs)
 # ----------------------------------------------------------------------------------------------------------
 
-class TrainerView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )    
+class TrainerView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):  
+    queryset = Course.objects.all()
     serializer_class = TrainerSerializer
-    queryset = Courses.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
 
@@ -85,9 +76,8 @@ class TrainerView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
 # ----------------------------------------------------------------------------------------------------------
 
 class TestemonialView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    #permission_classes = (IsAuthenticated, )
+    queryset = Course.objects.all()
     serializer_class = TestemonialSerializer
-    queryset = Courses.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
 
