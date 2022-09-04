@@ -1,5 +1,4 @@
 import re
-from turtle import pos
 from django.shortcuts import render
 
 from rest_framework import mixins

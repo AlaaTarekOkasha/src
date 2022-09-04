@@ -31,11 +31,12 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'dj_rest_auth',
     'landing_api',
     'core',
     'ckeditor',
     'ckeditor_uploader',
+
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

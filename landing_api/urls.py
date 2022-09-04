@@ -8,7 +8,7 @@ from core import views
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
-    re_path(r'^rest-auth/', include('rest_auth.urls')),
+    re_path(r'^rest-auth/', include('dj_rest_auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
