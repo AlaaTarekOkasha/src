@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'landingpages',
-        'USER': 'eyouth',
-        'PASSWORD': 'admin12345',
-        'HOST': 'localhost'
+        'USER': 'postgres',
+        'PASSWORD': 'adminadmin',
+        'HOST': 'database-1.chbefbbdpfwk.us-east-2.rds.amazonaws.com'
     }
 }
 
