@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>EYouth Landing Pages - CMS</title>
-        <style>
-            .btn {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat:wght@100&display=swap"
+        rel="stylesheet">
+    <title>EYouth Landing Pages - CMS</title>
+    <style>
+        .btn {
             background-color: goldenrod;
             border: none;
             color: white;
@@ -15,24 +22,28 @@
             font-size: 16px;
             cursor: pointer;
             text-align: center;
-            }
+        }
 
-            /* Darker background on mouse-over */
-            .btn:hover {
+        /* Darker background on mouse-over */
+        .btn:hover {
             background-color: peru;
-            }
-            a:link, a:visited {
+        }
+
+        a:link,
+        a:visited {
             color: white;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             text-align: center;
-            }
+        }
 
-            a:hover, a:active {
+        a:hover,
+        a:active {
             background-color: peru;
-            }
-            .center {    
+        }
+
+        .center {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,20 +54,70 @@
             left: 50%;
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            }
-            body {
-              background-image: url('/media/homeImage/Home.jpg');
-              background-repeat: no-repeat;
-              background-attachment: fixed; 
-              background-size: 100% 100%;
-            }
-            </style>
-    </head>
+        }
 
-    <div class="center">
-    <body>
-        {% csrf_token %}
-        <button class="btn"><a href="https://cms.eyouthlearning.com/admin/"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a></button>
-    </body>
+        body {
+            background-image: url('media/homeImage/Home.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        /* .first-div {
+            background-color: aqua !important;
+        } */
+
+        .first-div h1 {
+            font-family: 'Megrim';
+            font-size: 6rem;
+            color: aliceblue;
+            text-align: center !important;
+            line-height: 1rem;
+
+
+        }
+
+        .container {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            font-family: 'Montserrat', sans-serif;
+            padding-top: 13rem;
+            
+        }
+
+        .first-div p {
+            font-size: 2rem;
+            color: aliceblue !important;
+            font-weight: bold !important;
+        }
+        .eyouth-logo{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- {% csrf_token %} -->
+    <div class="container">
+        <div class="first-div">
+            <h1>EYouth</h1>
+            <p>CMS</p>
+            <p style="text-align: center">Landing Pages</p>
+        </div>
     </div>
+    <div class="center">
+        <button class="btn"><a href="https://cms.eyouthlearning.com/admin/"><i class="fa fa-sign-in"
+                    aria-hidden="true"></i> Login </a></button>
+    </div>
+    <div>
+        <img src="media/homeImage/EYouth-Logo.png" alt="EYouth-Logo" class="eyouth-logo">
+    </div>
+</body>
+
 </html>

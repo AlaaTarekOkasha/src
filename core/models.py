@@ -3,6 +3,7 @@ from venv import create
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
+from django.contrib.postgres.fields import ArrayField
 
 User = get_user_model()
 
@@ -38,7 +39,7 @@ class ModelsQs(models.QuerySet):
 
 class Trainer(DeletedAbstract, TimeStamp, models.Model):
     name = models.CharField(max_length=150, unique=True)
-    description = models.CharField(max_length=1000000)
+    description = ArrayField(models.TextField(max_length=1000000, null=True))
     image = models.ImageField(upload_to = trainersImageUpload, null=True)
     objects = ModelsQs.as_manager()
     
@@ -96,7 +97,7 @@ class Content(DeletedAbstract, TimeStamp, models.Model):
         return '%s' % (self.description)
 # ----------------------------------------------------------------------------------------------------------
 
-class EndContent(DeletedAbstract, TimeStamp, models.Model):
+class CourseBenefit(DeletedAbstract, TimeStamp, models.Model):
     course = models.ForeignKey(Course, related_name='end_content_list', on_delete = models.CASCADE)
     description = models.CharField(max_length=1000000)
     objects = ModelsQs.as_manager()

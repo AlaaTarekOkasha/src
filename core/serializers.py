@@ -43,7 +43,7 @@ class ContentSerializer(serializers.ModelSerializer):
 
 class EndContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EndContent
+        model = CourseBenefit
         fields = (
             'description',
         )

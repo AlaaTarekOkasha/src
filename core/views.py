@@ -37,7 +37,7 @@ class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
 # ----------------------------------------------------------------------------------------------------------
 
 class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
-    queryset = EndContent.objects.live()
+    queryset = CourseBenefit.objects.live()
     serializer_class = EndContentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']   
