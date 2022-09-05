@@ -39,7 +39,7 @@ class ModelsQs(models.QuerySet):
 
 class Trainer(DeletedAbstract, TimeStamp, models.Model):
     name = models.CharField(max_length=150, unique=True)
-    description = ArrayField(models.TextField(max_length=1000000, null=True))
+    description = ArrayField(models.TextField(max_length=1000000, null=True,),help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
     image = models.ImageField(upload_to = trainersImageUpload, null=True)
     objects = ModelsQs.as_manager()
     
@@ -49,7 +49,7 @@ class Trainer(DeletedAbstract, TimeStamp, models.Model):
 
 class Testemonial(DeletedAbstract, TimeStamp, models.Model):
     name = models.CharField(max_length=150)
-    description = models.CharField(max_length=1000000)
+    description = models.TextField(max_length=1000000)
     image = models.ImageField(upload_to = testemonialsImageUpload, null=True)
     objects = ModelsQs.as_manager()
     
@@ -59,11 +59,14 @@ class Testemonial(DeletedAbstract, TimeStamp, models.Model):
 
 class Course(DeletedAbstract, TimeStamp, models.Model):
     title = models.CharField(max_length=150, unique=True)
-    description = models.CharField(max_length=1000000)
+    description = models.TextField(max_length=1000000)
     image = models.ImageField(upload_to = courseImageUpload, null=True)
     price = models.IntegerField()
     hours = models.IntegerField(blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
+    content = ArrayField(models.TextField(max_length=1000000,),help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
+    course_benefits = ArrayField(models.TextField(max_length=1000000,), help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
+    user_criteria = ArrayField(models.TextField(max_length=1000000,), help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
     trainers = models.ManyToManyField(Trainer, related_name="trainers")
     testemonials = models.ManyToManyField(Testemonial, related_name="testemonials")
     objects = ModelsQs.as_manager()
@@ -86,31 +89,4 @@ class Course(DeletedAbstract, TimeStamp, models.Model):
             "description": i.description,
             "image": i.image
         } for i in self.testemonials.all()]    
-# ----------------------------------------------------------------------------------------------------------
-
-class Content(DeletedAbstract, TimeStamp, models.Model):
-    course = models.ForeignKey(Course, related_name='content_list', on_delete = models.CASCADE)
-    description = models.CharField(max_length=1000000)
-    objects = ModelsQs.as_manager()
-    
-    def __str__(self):
-        return '%s' % (self.description)
-# ----------------------------------------------------------------------------------------------------------
-
-class CourseBenefit(DeletedAbstract, TimeStamp, models.Model):
-    course = models.ForeignKey(Course, related_name='end_content_list', on_delete = models.CASCADE)
-    description = models.CharField(max_length=1000000)
-    objects = ModelsQs.as_manager()
-    
-    def __str__(self):
-        return '%s' % (self.description)
-# ----------------------------------------------------------------------------------------------------------
-
-class UserCriteria(DeletedAbstract, TimeStamp, models.Model):
-    course = models.ForeignKey(Course, related_name='user_criteria_list', on_delete = models.CASCADE)
-    description = models.CharField(max_length=1000000)
-    objects = ModelsQs.as_manager()
-    
-    def __str__(self):
-        return '%s' % (self.description)
 # ----------------------------------------------------------------------------------------------------------

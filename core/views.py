@@ -23,7 +23,7 @@ class CourseView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Generi
 # ----------------------------------------------------------------------------------------------------------
 
 class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView): 
-    queryset = Content.objects.live()
+    queryset = Course.objects.live()
     serializer_class = ContentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']
@@ -36,7 +36,7 @@ class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
 # ----------------------------------------------------------------------------------------------------------
 
 class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
-    queryset = CourseBenefit.objects.live()
+    queryset = Course.objects.live()
     serializer_class = EndContentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']   
@@ -49,7 +49,7 @@ class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Ge
 # ----------------------------------------------------------------------------------------------------------
 
 class UserCriteriaView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView): 
-    queryset = UserCriteria.objects.live()
+    queryset = Course.objects.live()
     serializer_class = UserCriteriaSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id']

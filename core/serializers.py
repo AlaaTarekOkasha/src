@@ -16,9 +16,6 @@ class ListTestemonialSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CourseSerializer(serializers.ModelSerializer):
-    content_list = serializers.StringRelatedField(many=True)
-    end_content_list = serializers.StringRelatedField(many=True)
-    user_criteria_list = serializers.StringRelatedField(many=True)
     class Meta:
         model = Course
         fields = (
@@ -29,31 +26,31 @@ class CourseSerializer(serializers.ModelSerializer):
             'price',
             'hours',
             'start_date',
-            'content_list',
-            'end_content_list',
-            'user_criteria_list',
+            'content',
+            'course_benefits',
+            'user_criteria',
         )
 
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Content
+        model = Course
         fields = (
-            'description',
+            'content',
         )        
 
 class EndContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CourseBenefit
+        model = Course
         fields = (
-            'description',
+            'course_benefits',
         )
 
 
 class UserCriteriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserCriteria
+        model = Course
         fields = (
-            'description',
+            'user_criteria',
         )
 
 class TrainerSerializer(serializers.ModelSerializer):

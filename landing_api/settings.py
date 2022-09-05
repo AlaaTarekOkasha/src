@@ -32,11 +32,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'corsheaders',
     'landing_api',
     'core',
     'ckeditor',
     'ckeditor_uploader',
-
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'landing_api.urls'
@@ -82,7 +83,7 @@ DATABASES = {
         'NAME': 'landingpages',
         'USER': 'postgres',
         'PASSWORD': 'adminadmin',
-        'HOST': 'database-1.chbefbbdpfwk.us-east-2.rds.amazonaws.com'
+        'HOST': 'marketing-cms.chbefbbdpfwk.us-east-2.rds.amazonaws.com'
     }
 }
 
@@ -212,3 +213,4 @@ REST_FRAMEWORK = {
 
 CSRF_COOKIE_SECURE=False
 CSRF_TRUSTED_ORIGINS = ['https://*.eyouthlearning.com']
+CORS_ORIGIN_ALLOW_ALL = True
