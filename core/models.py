@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.postgres.fields import ArrayField
+from django.utils.text import slugify
 
 User = get_user_model()
 
@@ -59,10 +60,11 @@ class Testemonial(DeletedAbstract, TimeStamp, models.Model):
 
 class Course(DeletedAbstract, TimeStamp, models.Model):
     title = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     description = models.TextField(max_length=1000000)
     image = models.ImageField(upload_to = courseImageUpload, null=True)
     price = models.IntegerField()
-    hours = models.IntegerField(blank=True, null=True)
+    hours = models.IntegerField()
     start_date = models.DateField(blank=True, null=True)
     content = ArrayField(models.TextField(max_length=1000000,),help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
     course_benefits = ArrayField(models.TextField(max_length=1000000,), help_text='Please use ( , ) to add a new bullet point. Example: Educaction is important, Health is wealth')
@@ -73,6 +75,11 @@ class Course(DeletedAbstract, TimeStamp, models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)
 
     @property
     def trainers_list(self):

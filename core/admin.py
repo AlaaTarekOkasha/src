@@ -16,11 +16,12 @@ class CourseLandingPage(admin.ModelAdmin):
     list_display = ('title', 'landing_page')
     def landing_page(self, obj):
         #coursetitle = obj.title.replace(" ", "") 
-        return format_html(f'<a href="https://emarketing.eyouthlearning.com/{obj.id}" class="default"> View Page</a>')
+        return format_html(f'<a href="https://emarketing.eyouthlearning.com/{obj.slug}" class="default"> View Page</a>')
     formfield_overrides = {
     models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':60})},
     ArrayField: {'widget': Textarea(attrs={'rows':10, 'cols':100})}
-}
+    }
+    exclude = ('slug',)
 
 class TrainerAdmin(admin.ModelAdmin):
     formfield_overrides = {

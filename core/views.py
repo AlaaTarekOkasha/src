@@ -14,7 +14,7 @@ class CourseView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Generi
     queryset = Course.objects.live()
     serializer_class = CourseSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']
+    filterset_fields = ['slug']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -26,7 +26,7 @@ class ContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
     queryset = Course.objects.live()
     serializer_class = ContentSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']
+    filterset_fields = ['slug']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs, )
@@ -39,7 +39,7 @@ class EndContentView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Ge
     queryset = Course.objects.live()
     serializer_class = EndContentSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']   
+    filterset_fields = ['slug']   
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -52,7 +52,7 @@ class UserCriteriaView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.
     queryset = Course.objects.live()
     serializer_class = UserCriteriaSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']
+    filterset_fields = ['slug']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -65,7 +65,7 @@ class TrainerView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
     queryset = Course.objects.all()
     serializer_class = TrainerSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']
+    filterset_fields = ['slug']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -78,7 +78,7 @@ class TestemonialView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.G
     queryset = Course.objects.all()
     serializer_class = TestemonialSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id']
+    filterset_fields = ['slug']
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
