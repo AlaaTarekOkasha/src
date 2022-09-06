@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat:wght@100&display=swap"
         rel="stylesheet">
     <title>EYouth Landing Pages - CMS</title>
+    {% block extrahead %}
+    <link rel="shortcut icon" href="{% static 'faveico/favicon.ico' %}" />
+    {% endblock %}
     <style>
         .btn {
             background-color: goldenrod;
@@ -69,7 +73,7 @@
 
         .first-div h1 {
             font-family: 'Megrim';
-            font-size: 6rem;
+            font-size: 9rem !important;
             color: aliceblue;
             text-align: center !important;
             line-height: 1rem;
@@ -85,12 +89,17 @@
             text-align: center;
             margin: auto;
             font-family: 'Montserrat', sans-serif;
-            padding-top: 13rem;
+            padding-top: 4.5rem;
             
+        }
+        @media screen and (max-width:360px ){
+            .first-div h1{
+                font-size: 6rem !important;
+            } 
         }
 
         .first-div p {
-            font-size: 2rem;
+            font-size: 3rem;
             color: aliceblue !important;
             font-weight: bold !important;
         }
@@ -112,7 +121,7 @@
         </div>
     </div>
     <div class="center">
-        <button class="btn"><a href="https://cms.eyouthlearning.com/admin/"><i class="fa fa-sign-in"
+        <button class="btn"><a href="/admin"><i class="fa fa-sign-in"
                     aria-hidden="true"></i> Login </a></button>
     </div>
     <div>
