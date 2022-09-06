@@ -1,0 +1,12 @@
+[2022-09-06 15:27:13 +0000] [77549] [INFO] Starting gunicorn 20.1.0
+
+Error: /var/run/gunicorn doesn't exist. Can't create pidfile.
+
+[2022-09-06 15:27:58 +0000] [77660] [INFO] Starting gunicorn 20.1.0
+[2022-09-06 15:27:58 +0000] [77660] [INFO] Listening at: http://0.0.0.0:8000 (77660)
+[2022-09-06 15:27:58 +0000] [77660] [INFO] Using worker: sync
+[2022-09-06 15:27:58 +0000] [77661] [INFO] Booting worker with pid: 77661
+[2022-09-06 15:27:58 +0000] [77662] [INFO] Booting worker with pid: 77662
+[2022-09-06 15:27:58 +0000] [77663] [INFO] Booting worker with pid: 77663
+[2022-09-06 15:27:58 +0000] [77664] [INFO] Booting worker with pid: 77664
+[2022-09-06 15:27:58 +0000] [77665] [INFO] Booting worker with pid: 77665
