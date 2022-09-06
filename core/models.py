@@ -60,7 +60,7 @@ class Testemonial(DeletedAbstract, TimeStamp, models.Model):
 
 class Course(DeletedAbstract, TimeStamp, models.Model):
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
+    slug = models.SlugField(max_length=250, unique=True, null=True, blank=True, help_text='Note: Slug must be in English and consist of letters, numbers or underscores. Slug will appear in the course URL. >> Example: Course Title is ( Programming Course ) or ( كورس البرمجة ) - Slug must be ( programing-course ) and Course URL will be ( https://emarketing.eyouthlearning.com/programing-course )')
     description = models.TextField(max_length=1000000)
     image = models.ImageField(upload_to = courseImageUpload, null=True)
     price = models.IntegerField()
@@ -76,10 +76,10 @@ class Course(DeletedAbstract, TimeStamp, models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        value = self.title
-        self.slug = slugify(value, allow_unicode=True)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     value = self.title
+    #     self.slug = slugify(value, allow_unicode=True)
+    #     super().save(*args, **kwargs)
 
     @property
     def trainers_list(self):
