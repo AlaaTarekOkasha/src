@@ -75,3 +75,12 @@ class CourseSerializer(serializers.ModelSerializer):
             'trainers_list',
             'testemonials_list'
         )
+
+
+
+class SlugsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = (
+            'slug',
+        )

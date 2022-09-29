@@ -10,6 +10,16 @@ from .models import *
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
+
+class SlugsView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
+    queryset = Course.objects.live()
+    serializer_class = SlugsSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
 class CourseView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
     queryset = Course.objects.live()
     serializer_class = CourseSerializer
