@@ -12,7 +12,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 class SlugsView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):   
-    queryset = Course.objects.live()
+    queryset = Course.objects.all().values("slug")
     serializer_class = SlugsSerializer
 
     def get(self, request, *args, **kwargs):
