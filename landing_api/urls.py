@@ -19,6 +19,7 @@ urlpatterns = [
     path('api/v1/criteria/view/', UserCriteriaView.as_view(), name='criteria-view'),
     path('api/v1/trainer/view/', TrainerView.as_view(), name='trainer-view'),
     path('api/v1/testemonial/view/', TestemonialView.as_view(), name='testemonial-view'),
+    path('api/v1/slugs', SlugsView.as_view(), name='slugs-view'),
 ]
 
 if settings.DEBUG:
